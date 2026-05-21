@@ -96,7 +96,7 @@ st.markdown("""
     </h2>
     <p style='color:#CCE0FF; margin:4px 0 0 0; font-size:13px;'>
         Weekly monitoring view | Head of Business Analytics |
-        XGBoost model (AUC 0.6448) | 50,000 postpaid customers
+        LightGBM model (AUC 0.6XXX) | 50,000 postpaid customers
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -117,7 +117,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown(
     "**Dialog Axiata PLC**  \n"
     "Data Analyst Assessment — Part K  \n"
-    "Model: XGBoost | AUC: 0.6448"
+    "Model: LightGBM | AUC: 0.6XXX"
 )
 
 # Apply filters
@@ -127,11 +127,11 @@ dist_f = district if selected_district == 'All Districts' \
          else district[district['district'] == selected_district]
 
 # Recalculate KPIs from filtered rows
-filt_cust   = plan_f['total_customers'].sum()
+filt_cust    = plan_f['total_customers'].sum()
 filt_churned = plan_f['churned_customers'].sum()
-filt_rate   = round(filt_churned / filt_cust * 100, 1) if filt_cust > 0 else 0
-filt_rev    = plan_f['monthly_revenue_at_risk'].sum()
-filt_high   = int(filt_cust * (kpi['high_risk_customers'] / kpi['total_customers']))
+filt_rate    = round(filt_churned / filt_cust * 100, 1) if filt_cust > 0 else 0
+filt_rev     = plan_f['monthly_revenue_at_risk'].sum()
+filt_high    = int(filt_cust * (kpi['high_risk_customers'] / kpi['total_customers']))
 
 if selected_district != 'All Districts':
     filt_cust    = dist_f['total_customers'].sum()
@@ -267,7 +267,7 @@ with col6:
         ['district', 'total_customers', 'churn_rate_pct', 'monthly_revenue_at_risk']
     ].copy().reset_index(drop=True)
     tbl.columns = ['District', 'Customers', 'Churn %', 'Rev at Risk']
-    tbl['Churn %']    = tbl['Churn %'].apply(lambda x: f"{x}%")
+    tbl['Churn %']     = tbl['Churn %'].apply(lambda x: f"{x}%")
     tbl['Rev at Risk'] = tbl['Rev at Risk'].apply(lambda x: f"LKR {x:,.0f}")
     st.dataframe(tbl, use_container_width=True, height=400)
 
@@ -281,7 +281,7 @@ col7, col8 = st.columns([1, 2])
 with col7:
     st.markdown(f"**High-risk customers:** {kpi['high_risk_customers']:,}")
     st.markdown("**Threshold:** Churn probability ≥ 65%")
-    st.markdown("**Ranked by:** XGBoost churn probability score")
+    st.markdown("**Ranked by:** LightGBM churn probability score")
     st.markdown("Customer IDs hidden for privacy.")
 with col8:
     st.dataframe(high_risk, use_container_width=True, height=420)
@@ -290,6 +290,6 @@ with col8:
 st.markdown("""
 <div style='text-align:center; color:#888; font-size:11px; padding:10px;'>
     Dialog Axiata PLC | Data Analyst Assessment Part K |
-    XGBoost AUC 0.6448 | 50,000 postpaid customers | 2025
+    LightGBM AUC 0.6XXX | 50,000 postpaid customers | 2025
 </div>
 """, unsafe_allow_html=True)
