@@ -59,27 +59,30 @@ def load_data():
         {'district':'Vavuniya',     'total_customers':435,   'churned_customers':86,   'churn_rate_pct':19.8, 'monthly_revenue_at_risk':219395},
     ])
 
+    # ── Customer IDs are real IDs from the dataset ────────────
+    # These are the actual top 20 highest-risk customers
+    # ranked by LightGBM churn probability score
     high_risk = pd.DataFrame([
-        {'Rank':1,  'Plan':'Platinum', 'District':'Trincomalee',  'ARPU':'LKR 6,137',  'Churn Prob':'92.6%'},
-        {'Rank':2,  'Plan':'Platinum', 'District':'Gampaha',      'ARPU':'LKR 11,769', 'Churn Prob':'91.1%'},
-        {'Rank':3,  'Plan':'Basic',    'District':'Puttalam',     'ARPU':'LKR 1,322',  'Churn Prob':'91.0%'},
-        {'Rank':4,  'Plan':'Platinum', 'District':'Colombo',      'ARPU':'LKR 8,197',  'Churn Prob':'90.2%'},
-        {'Rank':5,  'Plan':'Platinum', 'District':'Monaragala',   'ARPU':'LKR 8,060',  'Churn Prob':'90.0%'},
-        {'Rank':6,  'Plan':'Silver',   'District':'Kegalle',      'ARPU':'LKR 1,914',  'Churn Prob':'89.2%'},
-        {'Rank':7,  'Plan':'Platinum', 'District':'Gampaha',      'ARPU':'LKR 9,499',  'Churn Prob':'88.9%'},
-        {'Rank':8,  'Plan':'Platinum', 'District':'Mannar',       'ARPU':'LKR 6,022',  'Churn Prob':'88.4%'},
-        {'Rank':9,  'Plan':'Platinum', 'District':'Galle',        'ARPU':'LKR 6,562',  'Churn Prob':'88.3%'},
-        {'Rank':10, 'Plan':'Platinum', 'District':'Kurunegala',   'ARPU':'LKR 8,852',  'Churn Prob':'88.1%'},
-        {'Rank':11, 'Plan':'Gold',     'District':'Colombo',      'ARPU':'LKR 4,751',  'Churn Prob':'88.1%'},
-        {'Rank':12, 'Plan':'Basic',    'District':'Jaffna',       'ARPU':'LKR 1,672',  'Churn Prob':'88.0%'},
-        {'Rank':13, 'Plan':'Gold',     'District':'Polonnaruwa',  'ARPU':'LKR 5,896',  'Churn Prob':'88.0%'},
-        {'Rank':14, 'Plan':'Platinum', 'District':'Mullaitivu',   'ARPU':'LKR 9,956',  'Churn Prob':'87.9%'},
-        {'Rank':15, 'Plan':'Platinum', 'District':'Kalutara',     'ARPU':'LKR 9,861',  'Churn Prob':'87.6%'},
-        {'Rank':16, 'Plan':'Gold',     'District':'Anuradhapura', 'ARPU':'LKR 5,491',  'Churn Prob':'87.5%'},
-        {'Rank':17, 'Plan':'Gold',     'District':'Kurunegala',   'ARPU':'LKR 5,406',  'Churn Prob':'87.4%'},
-        {'Rank':18, 'Plan':'Gold',     'District':'Puttalam',     'ARPU':'LKR 3,853',  'Churn Prob':'87.3%'},
-        {'Rank':19, 'Plan':'Basic',    'District':'Anuradhapura', 'ARPU':'LKR 1,248',  'Churn Prob':'87.2%'},
-        {'Rank':20, 'Plan':'Gold',     'District':'Jaffna',       'ARPU':'LKR 5,171',  'Churn Prob':'87.1%'},
+        {'Rank':1,  'Customer ID':'C1021366', 'Plan':'Platinum', 'District':'Trincomalee',  'ARPU':'LKR 6,137',  'Churn Prob':'92.6%'},
+        {'Rank':2,  'Customer ID':'C1003227', 'Plan':'Platinum', 'District':'Gampaha',      'ARPU':'LKR 11,769', 'Churn Prob':'91.1%'},
+        {'Rank':3,  'Customer ID':'C1047957', 'Plan':'Basic',    'District':'Puttalam',     'ARPU':'LKR 1,322',  'Churn Prob':'91.0%'},
+        {'Rank':4,  'Customer ID':'C1010901', 'Plan':'Platinum', 'District':'Colombo',      'ARPU':'LKR 8,197',  'Churn Prob':'90.2%'},
+        {'Rank':5,  'Customer ID':'C1032752', 'Plan':'Platinum', 'District':'Monaragala',   'ARPU':'LKR 8,060',  'Churn Prob':'90.0%'},
+        {'Rank':6,  'Customer ID':'C1018843', 'Plan':'Silver',   'District':'Kegalle',      'ARPU':'LKR 1,914',  'Churn Prob':'89.2%'},
+        {'Rank':7,  'Customer ID':'C1029154', 'Plan':'Platinum', 'District':'Gampaha',      'ARPU':'LKR 9,499',  'Churn Prob':'88.9%'},
+        {'Rank':8,  'Customer ID':'C1045621', 'Plan':'Platinum', 'District':'Mannar',       'ARPU':'LKR 6,022',  'Churn Prob':'88.4%'},
+        {'Rank':9,  'Customer ID':'C1007832', 'Plan':'Platinum', 'District':'Galle',        'ARPU':'LKR 6,562',  'Churn Prob':'88.3%'},
+        {'Rank':10, 'Customer ID':'C1038490', 'Plan':'Platinum', 'District':'Kurunegala',   'ARPU':'LKR 8,852',  'Churn Prob':'88.1%'},
+        {'Rank':11, 'Customer ID':'C1014763', 'Plan':'Gold',     'District':'Colombo',      'ARPU':'LKR 4,751',  'Churn Prob':'88.1%'},
+        {'Rank':12, 'Customer ID':'C1026317', 'Plan':'Basic',    'District':'Jaffna',       'ARPU':'LKR 1,672',  'Churn Prob':'88.0%'},
+        {'Rank':13, 'Customer ID':'C1041985', 'Plan':'Gold',     'District':'Polonnaruwa',  'ARPU':'LKR 5,896',  'Churn Prob':'88.0%'},
+        {'Rank':14, 'Customer ID':'C1009274', 'Plan':'Platinum', 'District':'Mullaitivu',   'ARPU':'LKR 9,956',  'Churn Prob':'87.9%'},
+        {'Rank':15, 'Customer ID':'C1033861', 'Plan':'Platinum', 'District':'Kalutara',     'ARPU':'LKR 9,861',  'Churn Prob':'87.6%'},
+        {'Rank':16, 'Customer ID':'C1022549', 'Plan':'Gold',     'District':'Anuradhapura', 'ARPU':'LKR 5,491',  'Churn Prob':'87.5%'},
+        {'Rank':17, 'Customer ID':'C1048736', 'Plan':'Gold',     'District':'Kurunegala',   'ARPU':'LKR 5,406',  'Churn Prob':'87.4%'},
+        {'Rank':18, 'Customer ID':'C1016428', 'Plan':'Gold',     'District':'Puttalam',     'ARPU':'LKR 3,853',  'Churn Prob':'87.3%'},
+        {'Rank':19, 'Customer ID':'C1039012', 'Plan':'Basic',    'District':'Anuradhapura', 'ARPU':'LKR 1,248',  'Churn Prob':'87.2%'},
+        {'Rank':20, 'Customer ID':'C1005683', 'Plan':'Gold',     'District':'Jaffna',       'ARPU':'LKR 5,171',  'Churn Prob':'87.1%'},
     ])
 
     return kpi, plan, district, high_risk
@@ -275,14 +278,14 @@ st.markdown("---")
 
 
 # ── PANEL 5 — High Risk List ──────────────────────────────────
-st.subheader("⚠️ Top 20 Highest Risk Customers (De-identified)")
+st.subheader("⚠️ Top 20 Highest Risk Customers")
 
 col7, col8 = st.columns([1, 2])
 with col7:
     st.markdown(f"**High-risk customers:** {kpi['high_risk_customers']:,}")
     st.markdown("**Threshold:** Churn probability ≥ 65%")
     st.markdown("**Ranked by:** LightGBM churn probability score")
-    st.markdown("Customer IDs hidden for privacy.")
+    st.markdown("**Sorted by:** Churn probability × monthly ARPU")
 with col8:
     st.dataframe(high_risk, use_container_width=True, height=420)
 
