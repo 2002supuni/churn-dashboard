@@ -99,7 +99,7 @@ st.markdown("""
     </h2>
     <p style='color:#CCE0FF; margin:4px 0 0 0; font-size:13px;'>
         Weekly monitoring view | Head of Business Analytics |
-        LightGBM model (AUC 0.6XXX) | 50,000 postpaid customers
+        LightGBM model (AUC 0.6460) | 50,000 postpaid customers
     </p>
 </div>
 """, unsafe_allow_html=True)
